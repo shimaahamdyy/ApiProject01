@@ -34,6 +34,9 @@ namespace Store.Repository.Repositories
              => await _context.Set<TEntity>().ToListAsync();
 
 
+        //public async Task<TEntity> GetByIdAsNoTrackingAsync(Tkey? id)
+        //     => await _context.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(id);
+
 
         public async Task<TEntity> GetByIdAsync(Tkey? id)
              => await _context.Set<TEntity>().FindAsync(id);

@@ -11,7 +11,7 @@ namespace Store.Repository.Specifications
     {
         public BaseSpecification(Expression<Func<T, bool>> criteria)
         {
-            Criteria = criteria; 
+            Criteria = criteria;
         }
         public Expression<Func<T, bool>> Criteria { get; }
         public List<Expression<Func<T, object>>> Include { get; } = new List<Expression<Func<T, object>>>();
@@ -34,12 +34,12 @@ namespace Store.Repository.Specifications
         protected void AddOrderByDescending(Expression<Func<T, object>> orderByDescendingExpression)
             => OrderByDescending = orderByDescendingExpression;
 
-        protected void ApplyPagination(int skip , int take)
+        protected void ApplyPagination(int skip, int take)
         {
             Skip = skip;
             Take = take;
             IsPaginated = true;
-            
+
         }
 
     }

@@ -27,7 +27,7 @@ namespace Store.Repository.Repositories
             if (_repositories is null)
                 _repositories = new Hashtable();
 
-            var entityKey = typeof(TEntity).Name; 
+            var entityKey = typeof(TEntity).Name;  //"Product"
 
             if (!_repositories.ContainsKey(entityKey))
             {

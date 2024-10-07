@@ -23,7 +23,8 @@ namespace Store.Web
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            
+            // Add services to the container.
+
             builder.Services.AddControllers();
 
             builder.Services.AddDbContext<StoreDbContext>(options =>
@@ -31,15 +32,21 @@ namespace Store.Web
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
 
+            builder.Services.AddDbContext<StoreIdentityDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("IdentityConnection"));
+            });
+
             builder.Services.AddSingleton<IConnectionMultiplexer>(config =>
             {
-                //var configurations = ConfigurationOptions.Parse(builder.Configuration.GetConnectionString("Redis"));
-                //return ConnectionMultiplexer.Connect(configurations);
+                var configurations = ConfigurationOptions.Parse(builder.Configuration.GetConnectionString("Redis"));
+                return ConnectionMultiplexer.Connect(configurations);
 
-                return ConnectionMultiplexer.Connect(ConfigurationOptions.Parse(builder.Configuration.GetConnectionString("Redis")));
             });
 
             builder.Services.AddApplicationServices();
+
+            builder.Services.AddIdentityServices();
 
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -62,6 +69,8 @@ namespace Store.Web
             app.UseHttpsRedirection();
 
             app.UseStaticFiles();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

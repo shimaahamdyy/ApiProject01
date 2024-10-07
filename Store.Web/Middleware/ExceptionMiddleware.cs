@@ -10,9 +10,9 @@ namespace Store.Web.Middleware
         private readonly IHostEnvironment _environment;
         private readonly ILogger<ExceptionMiddleware> _logger;
 
-        public ExceptionMiddleware (
-            RequestDelegate next ,
-            IHostEnvironment environment ,
+        public ExceptionMiddleware(
+            RequestDelegate next,
+            IHostEnvironment environment,
             ILogger<ExceptionMiddleware> logger)
         {
             _next = next;
@@ -28,7 +28,7 @@ namespace Store.Web.Middleware
             }
             catch (Exception ex)
             {
-                _logger.LogError (ex , ex.Message);
+                _logger.LogError(ex, ex.Message);
 
                 context.Response.ContentType = "application/json";
                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError; //500
@@ -41,7 +41,7 @@ namespace Store.Web.Middleware
 
                 var json = JsonSerializer.Serialize(response, option);
 
-               await context.Response.WriteAsync (json);
+                await context.Response.WriteAsync(json);
             }
         }
     }
