@@ -10,7 +10,7 @@ namespace Store.Repository.Specifications
     public interface ISpecification<T>
     {
         //Criteria  .Where(x => x.id == id )
-        Expression<Func<T , bool>> Criteria { get; }
+        Expression<Func<T, bool>> Criteria { get; }
 
         //Includes
         List<Expression<Func<T, object>>> Include { get; }
@@ -22,5 +22,5 @@ namespace Store.Repository.Specifications
         bool IsPaginated { get; }
 
 
-}
+    }
 }

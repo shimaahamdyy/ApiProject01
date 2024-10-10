@@ -7,7 +7,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace Store.Web.Helper
 {
-    public class CacheAttribute : Attribute , IAsyncActionFilter
+    public class CacheAttribute : Attribute, IAsyncActionFilter
     {
         private readonly int _timeToLiveSeconds;
 
@@ -29,7 +29,7 @@ namespace Store.Web.Helper
                 var contentResult = new ContentResult
                 {
                     Content = CacheResponse,
-                    ContentType = "application/json" ,
+                    ContentType = "application/json",
                     StatusCode = 200
                 };
                 context.Result = contentResult;
@@ -40,7 +40,7 @@ namespace Store.Web.Helper
             var excutedContext = await next();
 
             if (excutedContext.Result is OkObjectResult response)
-                await _CacheService.SetCacheResponseAsync(CacheKey , response.Value , TimeSpan.FromSeconds(_timeToLiveSeconds));
+                await _CacheService.SetCacheResponseAsync(CacheKey, response.Value, TimeSpan.FromSeconds(_timeToLiveSeconds));
 
         }
 
@@ -50,7 +50,7 @@ namespace Store.Web.Helper
 
             CacheKey.Append($"{request.Path}");
 
-            foreach (var (Key , Value) in request.Query.OrderBy(x => x.Key))
+            foreach (var (Key, Value) in request.Query.OrderBy(x => x.Key))
                 CacheKey.Append($"|{Key}-{Value}");
 
             return CacheKey.ToString();

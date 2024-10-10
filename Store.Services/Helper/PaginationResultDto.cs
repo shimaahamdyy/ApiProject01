@@ -8,7 +8,7 @@ namespace Store.Services.Helper
 {
     public class PaginationResultDto<T>
     {
-        public PaginationResultDto(int pageSize, int pageIndex , int totalCount , IReadOnlyList<T> data)
+        public PaginationResultDto(int pageSize, int pageIndex, int totalCount, IReadOnlyList<T> data)
         {
             PageIndex = pageIndex;
             PageSize = pageSize;
