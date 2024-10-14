@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Store.Data.Entities.OrderEntities
 {
-    public class ProductItem
+    public class ProductItemOrdered
     {
         public int ProductId { get; set; } 
         public string ProductName { get; set; }
