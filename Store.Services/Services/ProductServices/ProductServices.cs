@@ -18,7 +18,7 @@ namespace Store.Services.Services.ProductServices
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public ProductServices(IUnitOfWork unitOfWork , IMapper mapper)
+        public ProductServices(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -44,7 +44,7 @@ namespace Store.Services.Services.ProductServices
 
             var mappedProducts = _mapper.Map<IReadOnlyList<ProductDetailsDto>>(products); ;
 
-            return new PaginationResultDto<ProductDetailsDto>( input.PageSize , input.PageIndex  , count, mappedProducts);
+            return new PaginationResultDto<ProductDetailsDto>(input.PageSize, input.PageIndex, count, mappedProducts);
         }
         public async Task<IReadOnlyList<BrandsTypesDetailsDto>> GetAllTypesAsync()
         {

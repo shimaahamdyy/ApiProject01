@@ -9,12 +9,12 @@ namespace Store.Web.Extensions
 {
     public static class IdentityServiceExtension
     {
-        public static IServiceCollection AddIdentityServices(this IServiceCollection services , IConfiguration config )
+        public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration config)
         {
 
             var builder = services.AddIdentityCore<AppUser>();
 
-            builder = new IdentityBuilder(builder.UserType , builder.Services);
+            builder = new IdentityBuilder(builder.UserType, builder.Services);
 
             builder.AddEntityFrameworkStores<StoreIdentityDbContext>();
 
@@ -25,15 +25,15 @@ namespace Store.Web.Extensions
                 {
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
-                        ValidateIssuerSigningKey = true , 
+                        ValidateIssuerSigningKey = true,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Token:Key"])),
-                        ValidateIssuer = true ,
+                        ValidateIssuer = true,
                         ValidIssuer = config["Token:Issuer"],
-                        ValidateAudience = false ,
+                        ValidateAudience = false,
                     };
                 });
 
             return services;
-        } 
+        }
     }
 }

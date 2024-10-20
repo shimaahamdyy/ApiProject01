@@ -13,5 +13,4 @@ namespace Store.Data.Entities.OrderEntities
         public ProductItemOrdered ProductItem { get; set; }
         public Guid OrderId { get; set; }
     }
-
 }

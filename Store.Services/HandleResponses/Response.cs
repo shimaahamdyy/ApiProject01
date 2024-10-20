@@ -8,7 +8,7 @@ namespace Store.Services.HandleResponses
 {
     public class Response
     {
-        public Response(int statusCode , string? message = null) 
+        public Response(int statusCode, string? message = null)
         {
             StatusCode = statusCode;
             Message = message ?? GetDefaultMessageForStatusCode(statusCode);

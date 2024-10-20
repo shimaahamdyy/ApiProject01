@@ -11,7 +11,7 @@ namespace Store.Repository.Specifications.OrderSpecs
     public class OrderWithPaymentIntentSpecifications : BaseSpecification<Order>
     {
         public OrderWithPaymentIntentSpecifications(string? PaymentIntentId)
-            :base(order => order.PaymentIntentId == PaymentIntentId)
+            : base(order => order.PaymentIntentId == PaymentIntentId)
         {
         }
     }

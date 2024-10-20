@@ -27,12 +27,12 @@ namespace Store.Services.Services.TokenServices
                 new Claim("UserName" , appUser.UserName)
             };
 
-            var creds = new SigningCredentials(_key , SecurityAlgorithms.HmacSha256);
+            var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha256);
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Issuer = _configuration["Token:Issuer"] ,
+                Issuer = _configuration["Token:Issuer"],
                 IssuedAt = DateTime.Now,
                 Expires = DateTime.Now.AddDays(1),
                 SigningCredentials = creds

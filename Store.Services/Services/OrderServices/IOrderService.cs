@@ -13,7 +13,7 @@ namespace Store.Services.Services.OrderServices
 {
     public interface IOrderService
     {
-        Task<OrderDetailsDto> CreateOrderAsync (OrderDto input);
+        Task<OrderDetailsDto> CreateOrderAsync(OrderDto input);
         Task<IReadOnlyList<OrderDetailsDto>> GetAllOrdersForUsersAsync(string buyerEmail);
         Task<OrderDetailsDto> GetOrderByIdAsync(Guid id);
         Task<IReadOnlyList<DeliveryMethod>> GetAllDeliveryMethodsAsync();

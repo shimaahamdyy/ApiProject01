@@ -15,8 +15,8 @@ namespace Store.Services.Services.OrderServices
         private readonly IMapper _mapper;
 
         public OrderService(
-            IBasketService basketService ,
-            IUnitOfWork unitOfWork ,
+            IBasketService basketService,
+            IUnitOfWork unitOfWork,
             IMapper mapper)
         {
             _basketService = basketService;
@@ -27,13 +27,13 @@ namespace Store.Services.Services.OrderServices
         {
             //1- Get Basket
             var basket = await _basketService.GetBasketAsync(input.BasketId);
-            
+
             if (basket is null)
                 throw new Exception("Basket Not Exist");
 
 
             #region Fill Order Item List With Items in Basket
-           
+
             var orderItems = new List<OrderItemDto>();
 
             foreach (var basketItems in basket.BasketItems)
@@ -111,7 +111,7 @@ namespace Store.Services.Services.OrderServices
         }
 
         public async Task<IReadOnlyList<DeliveryMethod>> GetAllDeliveryMethodsAsync()
-            => await _unitOfWork.Repository<DeliveryMethod , int>().GetAllAsync();
+            => await _unitOfWork.Repository<DeliveryMethod, int>().GetAllAsync();
 
         public async Task<IReadOnlyList<OrderDetailsDto>> GetAllOrdersForUsersAsync(string buyerEmail)
         {

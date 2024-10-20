@@ -16,8 +16,8 @@ namespace Store.Web.Extensions
                         Version = "v1" ,
                         Contact = new OpenApiContact
                         {
-                            Name = "Alaa Mohammed",
-                            Email = "alaamohammed@gmail.com",
+                            Name = "ShimaaHamdy",
+                            Email = "ShimaaHamdy@gmail.com",
                             Url = new Uri ("https://twitter.com/jwalkner"),
                         }
 

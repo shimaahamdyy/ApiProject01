@@ -13,13 +13,13 @@ namespace Store.Web.Controllers
         private readonly IUserService _userService;
         private readonly UserManager<AppUser> _userManager;
 
-        public AccountController(IUserService userService , UserManager<AppUser> userManager)
+        public AccountController(IUserService userService, UserManager<AppUser> userManager)
         {
             _userService = userService;
             _userManager = userManager;
         }
         [HttpPost]
-        public async Task<ActionResult<UserDto>> Login (LoginDto input)
+        public async Task<ActionResult<UserDto>> Login(LoginDto input)
         {
             var user = await _userService.Login(input);
 

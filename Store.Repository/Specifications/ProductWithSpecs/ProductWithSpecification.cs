@@ -12,13 +12,13 @@ namespace Store.Repository.Specifications.ProductSpecs
         public ProductWithSpecification(ProductSpecifications specs) :
             base(product => (!specs.BrandId.HasValue || product.BrandId == specs.BrandId.Value) &&
                             (!specs.TypeId.HasValue || product.BrandId == specs.TypeId.Value) &&
-                            (string.IsNullOrEmpty(specs.Search) || product.Name.Trim().ToLower().Contains(specs.Search))) 
-                            
+                            (string.IsNullOrEmpty(specs.Search) || product.Name.Trim().ToLower().Contains(specs.Search)))
+
         {
             AddInclude(x => x.Brand);
             AddInclude(x => x.Type);
 
-            ApplyPagination(specs.PageSize * (specs.PageIndex - 1) , specs.PageSize);
+            ApplyPagination(specs.PageSize * (specs.PageIndex - 1), specs.PageSize);
 
             if (!string.IsNullOrEmpty(specs.Sort))
             {
@@ -38,10 +38,10 @@ namespace Store.Repository.Specifications.ProductSpecs
                 }
 
             }
-                
+
         }
 
-        public ProductWithSpecification(int? id ) : base(product =>  product.Id == id)
+        public ProductWithSpecification(int? id) : base(product => product.Id == id)
         {
             AddInclude(x => x.Brand);
             AddInclude(x => x.Type);

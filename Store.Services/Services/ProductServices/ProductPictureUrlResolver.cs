@@ -24,7 +24,7 @@ namespace Store.Services.Services.ProductServices
             if (!string.IsNullOrEmpty(source.PictureUrl))
                 return $"{_configuration["BaseUrl"]}/{source.PictureUrl}";
 
-            return null ;
+            return null;
         }
     }
 }

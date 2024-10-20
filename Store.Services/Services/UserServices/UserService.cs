@@ -26,7 +26,7 @@ namespace Store.Services.Services.UserServices
             if (user is null)
                 return null;
 
-            var result = await _signInManager.CheckPasswordSignInAsync(user , input.Password , false);
+            var result = await _signInManager.CheckPasswordSignInAsync(user, input.Password, false);
 
             if (!result.Succeeded)
                 throw new Exception("Login Faild");
@@ -55,7 +55,7 @@ namespace Store.Services.Services.UserServices
                 UserName = input.DisplayName,
             };
 
-            var result = await _userManager.CreateAsync(appUser , input.Password);
+            var result = await _userManager.CreateAsync(appUser, input.Password);
 
             if (!result.Succeeded)
                 throw new Exception(result.Errors.Select(x => x.Description).FirstOrDefault());
@@ -69,5 +69,9 @@ namespace Store.Services.Services.UserServices
             };
         }
 
+    }
+
+    internal class SignInManager<T>
+    {
     }
 }

@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Store.Services.Services.BasketService.Dtos
 {
-    public class BasketProfile : Profile 
+    public class BasketProfile : Profile
     {
-        public BasketProfile() 
+        public BasketProfile()
         {
-            CreateMap<CustomerBasket , CustomerBasketDto>().ReverseMap();
-            CreateMap<BasketItem , BasketItemDto>().ReverseMap();   
+            CreateMap<CustomerBasket, CustomerBasketDto>().ReverseMap();
+            CreateMap<BasketItem, BasketItemDto>().ReverseMap();
         }
     }
 }
